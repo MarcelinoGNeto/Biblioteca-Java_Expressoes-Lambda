@@ -3,6 +3,8 @@ package application;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import entities.Product;
 
@@ -17,8 +19,21 @@ public class Program {
 		list.add(new Product("Mouse", 50.00));
 		list.add(new Product("Tablet", 350.50));
 		list.add(new Product("HD Case", 80.90));
+		
+//---------- FUNCTION ----------------
+//		List<String> names = list.stream().map(new UpperCaseName()).collect(Collectors.toList()); //Function: implementando pela interface - classe
+//		List<String> names = list.stream().map(Product::staticUpperCaseName).collect(Collectors.toList()); //Function: implementando pelo método estático
+//		List<String> names = list.stream().map(Product::nonStaticUpperCaseName).collect(Collectors.toList()); //Function: implementando pelo método não estático
+/*
+		Function<Product, String> func = p -> p.getName().toUpperCase(); //Function: declarada
+		List<String> names = list.stream().map(func).collect(Collectors.toList()); //Function: declarada (continuação)
+*/		
+		List<String> names = list.stream().map(p -> p.getName().toUpperCase()).collect(Collectors.toList()); //Function: Inline
+		
+		names.forEach(System.out::println);
 
 //---------- CONSUMER ----------------
+/*
 //		list.forEach(new PriceUpdate()); //Consumer: implementando pela interface da classe
 //		list.forEach(Product::staticPriceUpdate); //Consumer: implementando pelo método estatico da classe Product
 //		list.forEach(Product::nonStaticPriceUpdate); //Consumer: implementando pelo método não estatico da classe Product
@@ -26,10 +41,7 @@ public class Program {
 
 		list.forEach(p -> p.setPrice(p.getPrice() * 1.1)); //Consumer: Expressão lambda in line
 		list.forEach(System.out::println);
-		
-		
-		
-		
+*/		
 	
 // --------- PREDICATE ----------------		
 /*
