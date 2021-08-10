@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Locale;
 
 import entities.Product;
-import util.PriceUpdate;
 
 public class Program {
 
@@ -20,9 +19,15 @@ public class Program {
 		list.add(new Product("HD Case", 80.90));
 
 //---------- CONSUMER ----------------
-		list.forEach(new PriceUpdate());
-		
+//		list.forEach(new PriceUpdate()); //Consumer: implementando pela interface da classe
+//		list.forEach(Product::staticPriceUpdate); //Consumer: implementando pelo método estatico da classe Product
+//		list.forEach(Product::nonStaticPriceUpdate); //Consumer: implementando pelo método não estatico da classe Product
+//		Consumer<Product> cons = p -> p.setPrice(p.getPrice() * 1.1); //Consumer: Expressão lambda declarada
+
+		list.forEach(p -> p.setPrice(p.getPrice() * 1.1)); //Consumer: Expressão lambda in line
 		list.forEach(System.out::println);
+		
+		
 		
 		
 	
