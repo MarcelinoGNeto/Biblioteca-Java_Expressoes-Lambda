@@ -20,8 +20,11 @@ public class Program {
 //		list.removeIf(new ProductPredicate()); //Referecia a expressao lambda de uma classe
 //		list.removeIf(Product::staticProductPredicate); //Referencia a expressão lambda do método estático de uma classe
 //		list.removeIf(Product::nonStaticProductPredicate); //Referencia a expressão lambda do método não estático de uma classe
+/*
 		Predicate<Product> pred = p -> p.getPrice() >= 100.0; //expressão lambda declarada
 		list.removeIf(pred); //complemento da implementação da expressão lambda declarada
+*/
+		list.removeIf(p -> p.getPrice() >= 100.0); //in line - expressão lambda completa declarada na mesma linha
 		
 		for (Product p : list) {
 			System.out.println(p);
